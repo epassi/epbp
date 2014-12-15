@@ -1,0 +1,19 @@
+{
+	"name": "epbp",
+	"description": "Standard web template.",
+	"version": "1.0.0",
+	"dependencies": {
+		"jquery": "latest"
+	},
+    "install": {
+        "path": {
+            "js": "_js/",
+            "css": "_css/"
+        },
+        "sources": {
+        	"jquery": {
+        		"mapping":[{"bower_components/jquery/dist/jquery.min.js": "jquery.min.js"}]
+        	}
+        }
+    }
+}
