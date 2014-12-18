@@ -1,24 +1,32 @@
-module.exports = function(grunt) {
+// README
+// http://ericnish.io/blog/compile-less-files-with-grunt
 
-	// Project configuration.
+module.exports = function(grunt) {
+	require('jit-grunt')(grunt);
+
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-			},
-			build: {
- 				src: 'src/<%= pkg.name %>.js',
-				dest: 'build/<%= pkg.name %>.min.js'
+		less: {
+			development: {
+				options: {
+					compress: true,
+					yuicompress: true,
+					optimization: 2
+				},
+				files: {
+					"resources/css/main.css": "resources/css/main.less" // destination file and source file
+				}
+			}
+		},
+		watch: {
+			styles: {
+				files: ['resources/css/**/*.less'], // which files to watch
+				tasks: ['less'],
+				options: {
+					nospawn: true
+				}
 			}
 		}
 	});
 
-	// Load the plugin that provides the "uglify" task.
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-less');
-
-	// Default task(s).
-	grunt.registerTask('default', ['uglify']);
-
+	grunt.registerTask('default', ['less', 'watch']);
 };
