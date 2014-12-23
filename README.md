@@ -1,7 +1,7 @@
 epbp
 ====
 
-Less-based boilerplate for my prototyping projects. Includes:
+LESS-based boilerplate for my prototyping projects. Includes:
 - A set of LESS files for managing media queries.
 - Gruntfile for compiling LESS files and maintaining a separate distribution folder.
 - Bower.js for jQuery and Handlebars.
@@ -11,3 +11,4 @@ Less-based boilerplate for my prototyping projects. Includes:
 1. Navigate to the src folder.
 1. Run `npm install`.
 1. Run `bower install`.
+1. Run `grunt`.
