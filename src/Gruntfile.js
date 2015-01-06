@@ -23,12 +23,10 @@ module.exports = function(grunt) {
 			build: {
 				cwd: ".",			// Source folder
 				src: [	"./*.html", 
-						"./resources/css/*.css", 
-						"./resources/img/*.jpg", 
-						"./resources/img/*.png", 
-						"./resources/img/*.gif", 
+						"./resources/css/**", 
+						"./resources/img/**/*.{png,jpg,gif}",
 						"./resources/data/**", 
-						"./resources/js/**",
+						"./resources/js/**/*.js",
 						"./vendor/jquery/dist/jquery.min.js" 
 						],		// The files to copy
 				dest: "../dist",		// Destination folder
@@ -42,6 +40,25 @@ module.exports = function(grunt) {
 					force: true
 				}
 			},
+		},
+		browserSync: {
+			dev: {
+				bsFiles: {
+					src: [	"../dist/**/*.html",
+							"../dist/resources/css/**",
+							"../dist/resources/js/**/*.js",
+							"../dist/resources/img/**/*.{png,jpg,gif}",
+							"../dist/resources/data/**"
+							]
+				},
+				options: {
+					server: {
+						// baseDir: "./" // src build
+						baseDir: "../dist/" // dist build
+					},
+					watchTask: true
+				}
+			}
 		},
 		watch: {
 			styles: {
@@ -82,5 +99,11 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['less', 'clean', 'copy', 'watch']);
+	grunt.loadNpmTasks("grunt-contrib-less");
+	grunt.loadNpmTasks("grunt-contrib-copy");
+	grunt.loadNpmTasks("grunt-contrib-clean");
+	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-browser-sync");
+
+	grunt.registerTask('default', ['less', 'clean', 'copy', 'browserSync', 'watch']);
 };
