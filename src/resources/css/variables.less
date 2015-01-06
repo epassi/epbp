@@ -1,5 +1,8 @@
+
 @baseFontSize: 			16; //px
 
-@vpSmallMax: 			599 / @baseFontSize * 1em;
-@vpMediumMin: 			600 / @baseFontSize * 1em;
-@vpLargeMin: 			900 / @baseFontSize * 1em;
+// DON'T FORGET PARENS AROUND EXPRESSIONS.
+// Otherwise expressions don't get evaluated during compile.
+@vpSmallMax: 			(599 / @baseFontSize * 1em);
+@vpMediumMin: 			(600 / @baseFontSize * 1em);
+@vpLargeMin: 			(900 / @baseFontSize * 1em);
