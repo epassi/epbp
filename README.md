@@ -10,6 +10,6 @@ Directions:
 
 1. Run `npm install`.
 2. Run `bower install`.
-3. Run `grunt`. Build preview will open in browser
+3. Run `grunt`. Build preview will open in browser.
 
 Browser will show live preview of changes to source files.
