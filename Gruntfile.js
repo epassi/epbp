@@ -29,13 +29,13 @@ module.exports = function(grunt) {
 						"./resources/js/**/*.js",
 						"./vendor/jquery/dist/jquery.min.js" 
 						],		// The files to copy
-				dest: "../dist",		// Destination folder
+				dest: "./dist",		// Destination folder
 				expand: true		// Enables these options. Required when using cwd.
 			},
 		},
 		clean: {
 			build: {
-				src: [ '../dist' ],
+				src: [ './dist' ],
 				options: {
 					force: true
 				}
@@ -44,17 +44,17 @@ module.exports = function(grunt) {
 		browserSync: {
 			dev: {
 				bsFiles: {
-					src: [	"../dist/**/*.html",
-							"../dist/resources/css/**",
-							"../dist/resources/js/**/*.js",
-							"../dist/resources/img/**/*.{png,jpg,gif}",
-							"../dist/resources/data/**"
+					src: [	"./dist/**/*.html",
+							"./dist/resources/css/**",
+							"./dist/resources/js/**/*.js",
+							"./dist/resources/img/**/*.{png,jpg,gif}",
+							"./dist/resources/data/**"
 							]
 				},
 				options: {
 					server: {
 						// baseDir: "./" // src build
-						baseDir: "../dist/" // dist build
+						baseDir: "./dist/" // dist build
 					},
 					watchTask: true
 				}

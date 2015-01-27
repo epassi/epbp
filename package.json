@@ -2,6 +2,10 @@
   "name": "epbp",
   "version": "1.0.0",
   "description": "Prototype boilerplate.",
+  "repository": { 
+    "type" : "git", 
+    "url" : "http://github.com/epassi/epbp.git"
+  },
   "author": "Emilio Passi",
   "devDependencies": {
     "grunt": "^0.4.5",
