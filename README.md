@@ -7,6 +7,7 @@ LESS-based boilerplate for personal prototyping projects. Includes:
 * Bower.js for jQuery.
 
 Directions:
+
 1. Run `npm install`.
 2. Run `bower install`.
 3. Run `grunt`. Build preview will open in browser
