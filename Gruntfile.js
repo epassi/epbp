@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 			build: {
 				cwd: ".",			// Source folder
 				src: [	"./*.html", 
-						"./resources/css/**", 
+						"./resources/css/**/*.css", 
 						"./resources/img/**/*.{png,jpg,gif}",
 						"./resources/data/**", 
 						"./resources/js/**/*.js",
