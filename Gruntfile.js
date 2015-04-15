@@ -87,7 +87,7 @@ module.exports = function(grunt) {
 				}
 			},
 			js: {
-				files: ["resources/js/**/*.js"],
+				files: ["resources/js/**/*.js", "Gruntfile.js"],
 				tasks: ["jshint", "uglify", "clean", "copy"],
 				options: {
 					nospawn: true
