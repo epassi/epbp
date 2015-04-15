@@ -7,15 +7,27 @@ module.exports = function(grunt) {
 	require('jit-grunt')(grunt);
 
 	grunt.initConfig({
-		less: {
-			development: {
+		sass: {
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'resources/css',
+					src: ['*.scss'],
+					dest: 'resources/css',
+					ext: '.min.css'
+				}],
 				options: {
-					compress: true,
-					yuicompress: true,
-					optimization: 2
-				},
+					style: 'compressed'
+				}
+			}
+		},
+		jshint: {
+			files: ['resources/js/**/*.js', '!resources/js/all.min.js']
+		},
+		uglify: {
+			my_target: {
 				files: {
-					"resources/css/main.css": "resources/css/main.less" // destination file and source file
+					'resources/js/all.min.js': ['vendor/jquery/dist/jquery.min.js', 'resources/js/**/*.js', '!resources/js/all.min.js']
 				}
 			}
 		},
@@ -26,8 +38,7 @@ module.exports = function(grunt) {
 						"./resources/css/**/*.css", 
 						"./resources/img/**/*.{png,jpg,gif}",
 						"./resources/data/**", 
-						"./resources/js/**/*.js",
-						"./vendor/jquery/dist/jquery.min.js" 
+						"./resources/js/**/*.min.js"
 						],		// The files to copy
 				dest: "./dist",		// Destination folder
 				expand: true		// Enables these options. Required when using cwd.
@@ -61,9 +72,9 @@ module.exports = function(grunt) {
 			}
 		},
 		watch: {
-			styles: {
-				files: ['resources/css/**/*.less'], // which files to watch
-				tasks: ['less', 'clean', 'copy'],
+			sass: {
+				files: ['resources/css/**/*.scss'], // which files to watch
+				tasks: ['sass', 'clean', 'copy'],
 				options: {
 					nospawn: true
 				}
@@ -77,7 +88,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: ["resources/js/**/*.js"],
-				tasks: ["clean", "copy"],
+				tasks: ["jshint", "uglify", "clean", "copy"],
 				options: {
 					nospawn: true
 				}
@@ -99,11 +110,13 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks("grunt-contrib-less");
+	grunt.loadNpmTasks("grunt-contrib-sass");
+	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks("grunt-contrib-clean");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-browser-sync");
 
-	grunt.registerTask('default', ['less', 'clean', 'copy', 'browserSync', 'watch']);
+	grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'clean', 'copy', 'browserSync', 'watch']);
 };
