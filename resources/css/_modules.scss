@@ -1,0 +1,54 @@
+// MODULES 
+//
+// Used for repeatable elements that appear within layout modules.
+// They should use class selectors (.) and not ID selectors (#).
+// Examples: text styles, UI elements.
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Sample module 
+
+// Foundation classes 
+
+	.sample-module {
+		// Foundation properties.
+		color: $color-medium;
+	}
+
+	.sample-module.is-active {
+	}
+
+	@media (min-width: $vp-medium-min) {
+		.sample-module {
+		}
+	}
+
+// Variation 1 
+
+	.sample-module-variation-1 {
+		@extend .sample-module;
+
+		// Variation 1 properties.
+	}
+
+	.sample-module-variation-1.is-active {
+	}
+
+	@media (min-width: $vp-medium-min) {
+		.sample-module-variation-1 {
+		}
+	}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Your module 
+
+// Foundation classes
+	// modules
+	// states
+	// media queries
+
+// Variations
+	// modules
+	// states
+	// media queries

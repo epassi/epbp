@@ -1,13 +1,24 @@
-// DON'T FORGET PARENS AROUND EXPRESSIONS.
-// Otherwise expressions don't get evaluated during compile.
+// Breakpoints
+$vp-small-max: 		599px;
+$vp-medium-min: 	600px;
+$vp-large-min: 		900px;
 
-/* Breakpoints */
-$vp-sm-max: 59.9rem;
-$vp-md-min: 60.0rem;
-$vp-lg-min: 90.0rem;
+// Font sizes
+$font-small: 		1.2rem;
+$font-medium:		1.6rem;
+$font-large: 		2.0rem;
 
-/* Font sizes */
+// Colors
+$color-xlight:		#ccc;
+$color-light:		#ccc;
+$color-medium:		#ccc;
+$color-dark:		#ccc;
+$color-xdark:		#ccc;
+$color-invert:		#fff;
 
-/* Colors */
+// Motion
+$speed-fast: 		500ms;
+$speed-moderate:	1000ms;
+$speed-slow:		2000ms;
 
-/* Other */
+// Other
