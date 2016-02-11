@@ -27,7 +27,10 @@ module.exports = function(grunt) {
 		uglify: {
 			my_target: {
 				files: {
-					'resources/js/all.min.js': ['vendor/jquery/dist/jquery.min.js', 'resources/js/**/*.js', '!resources/js/all.min.js']
+					'resources/js/all.min.js': [
+						'vendor/jquery/dist/jquery.min.js',
+						'resources/js/**/*.js', 
+						'!resources/js/all.min.js']
 				}
 			}
 		},
