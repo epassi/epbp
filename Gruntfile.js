@@ -1,74 +1,75 @@
 // README
-// http://ericnish.io/blog/compile-less-files-with-grunt
 // http://www.sitepoint.com/writing-awesome-build-script-grunt/
 // http://www.smashingmagazine.com/2013/10/29/get-up-running-grunt/
 
 module.exports = function(grunt) {
-	require('jit-grunt')(grunt);
+	require("jit-grunt")(grunt);
 
 	grunt.initConfig({
 		sass: {
-			dist: {
+			dev: {
 				files: [{
 					expand: true,
-					cwd: 'resources/css',
-					src: ['*.scss'],
-					dest: 'resources/css',
-					ext: '.min.css'
+					cwd: "resources/css",
+					src: ["*.scss"],
+					dest: "resources/css",
+					ext: ".min.css"
 				}],
 				options: {
-					style: 'compressed'
+					style: "compressed"
 				}
 			}
 		},
 		jshint: {
-			files: ['resources/js/**/*.js', '!resources/js/all.min.js']
+			dev: ["resources/js/**/*.js", 
+				  "!resources/js/*.min.js"]
 		},
 		uglify: {
-			my_target: {
+			dev: {
 				files: {
-					'resources/js/all.min.js': [
-						'vendor/jquery/dist/jquery.min.js',
-						'resources/js/**/*.js', 
-						'!resources/js/all.min.js']
+					"resources/js/all.min.js": [
+						"vendor/jquery/dist/jquery.min.js",
+						"resources/js/**/*.js", 
+						"!resources/js/all.min.js"]
 				}
 			}
 		},
 		copy: {
-			build: {
+			dev: {
 				cwd: ".",			// Source folder
 				src: [	"./*.html", 
 						"./resources/css/**/*.css", 
 						"./resources/img/**/*.{png,jpg,gif}",
 						"./resources/data/**", 
+						"./resources/fonts/*.{eot,svg,ttf,woff}",
+						"./resources/audio/**/*.{mp3,wav}",
 						"./resources/js/**/*.min.js"
 						],		// The files to copy
-				dest: "./dist",		// Destination folder
+				dest: "./builds/dev",		// Destination folder
 				expand: true		// Enables these options. Required when using cwd.
 			},
 		},
 		clean: {
-			build: {
-				src: [ './dist' ],
+			dev: {
+				src: [ "./builds/dev" ],
 				options: {
 					force: true
 				}
-			},
+			}
 		},
 		browserSync: {
 			dev: {
 				bsFiles: {
-					src: [	"./dist/**/*.html",
-							"./dist/resources/css/**",
-							"./dist/resources/js/**/*.js",
-							"./dist/resources/img/**/*.{png,jpg,gif}",
-							"./dist/resources/data/**"
+					src: [	"./builds/dev/**/*.html",
+							"./builds/dev/resources/css/**",
+							"./builds/dev/resources/js/**/*.js",
+							"./builds/dev/resources/img/**/*.{png,jpg,gif}",
+							"./builds/dev/resources/data/**"
 							]
 				},
 				options: {
 					server: {
-						// baseDir: "./" // src build
-						baseDir: "./dist/" // dist build
+						baseDir: "./builds/dev/"
 					},
 					watchTask: true
 				}
@@ -76,29 +77,29 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			sass: {
-				files: ['resources/css/**/*.scss'], // which files to watch
-				tasks: ['sass', 'clean', 'copy'],
+				files: ["resources/css/**/*.scss"], // which files to watch
+				tasks: ["sass:dev", "clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
 				}
 			},
 			html: {
-				files: ['**/*.html'], // which files to watch
-				tasks: ['clean', 'copy'],
+				files: ["**/*.html"], // which files to watch
+				tasks: ["clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
 				}
 			},
 			js: {
 				files: ["resources/js/**/*.js", "Gruntfile.js"],
-				tasks: ["jshint", "uglify", "clean", "copy"],
+				tasks: ["jshint:dev", "uglify:dev", "clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
 				}
 			},
 			img: {
 				files: ["resources/img/**/*.{png,jpg,gif}"],
-				tasks: ["clean", "copy"],
+				tasks: ["clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
 				}
@@ -121,5 +122,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 	grunt.loadNpmTasks("grunt-browser-sync");
 
-	grunt.registerTask('default', ['sass', 'jshint', 'uglify', 'clean', 'copy', 'browserSync', 'watch']);
+	grunt.registerTask("default", ["sass:dev", "jshint:dev", "uglify:dev", "clean:dev", "copy:dev", "browserSync", "watch"]);
+	grunt.registerTask("dev", ["sass:dev", "jshint:dev", "uglify:dev", "clean:dev", "copy:dev", "browserSync", "watch"]);
 };
