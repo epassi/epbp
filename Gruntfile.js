@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				cwd: ".",			// Source folder
 				src: [	"./*.html", 
 						"./resources/css/**/*.css", 
-						"./resources/img/**/*.{png,jpg,gif}",
+						"./resources/img/**/*.{png,jpg,gif,svg}",
 						"./resources/data/**", 
 						"./resources/fonts/*.{eot,svg,ttf,woff}",
 						"./resources/audio/**/*.{mp3,wav}",
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 					src: [	"./builds/dev/**/*.html",
 							"./builds/dev/resources/css/**",
 							"./builds/dev/resources/js/**/*.js",
-							"./builds/dev/resources/img/**/*.{png,jpg,gif}",
+							"./builds/dev/resources/img/**/*.{png,jpg,gif,svg}",
 							"./builds/dev/resources/data/**"
 							]
 				},
@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 				}
 			},
 			img: {
-				files: ["resources/img/**/*.{png,jpg,gif}"],
+				files: ["resources/img/**/*.{png,jpg,gif,svg}"],
 				tasks: ["clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
