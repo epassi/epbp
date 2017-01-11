@@ -1,7 +1,3 @@
-// README
-// http://www.sitepoint.com/writing-awesome-build-script-grunt/
-// http://www.smashingmagazine.com/2013/10/29/get-up-running-grunt/
-
 module.exports = function(grunt) {
 	require("jit-grunt")(grunt);
 
