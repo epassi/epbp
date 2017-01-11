@@ -2,6 +2,10 @@
 .sass-cache
 .sass-cache/*
 builds
-resources/css/main.min.css
-resources/css/main.min.css.map
+node_modules
+vendor
+resources/css/*.css
+resources/css/*.map
+resources/js/*.map
 resources/js/all.min.js
+resources/js/*.es6.js
