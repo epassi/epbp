@@ -20,6 +20,19 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		postcss: {
+			options: {
+				// syntax: require('postcss-scss'), // work with SCSS directly
+				processors: [
+					// require('pixrem')(), // add fallbacks for rem units 
+					require("autoprefixer")({browsers: ["last 2 versions"]}) // add vendor prefixes 
+					// require('cssnano')() // minify the result 
+					]
+			},
+			dev: {
+				src: "resources/css/main.min.css"
+			}
+		},
 		jshint: {
 			dev: ["resources/js/**/*.js", 
 				  "!resources/js/*.min.js"]
@@ -91,7 +104,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ["resources/css/**/*.scss"], // which files to watch
-				tasks: ["sass:dev", "clean:dev", "copy:dev"],
+				tasks: ["sass:dev", "postcss:dev", "clean:dev", "copy:dev"],
 				options: {
 					nospawn: true
 				}
@@ -135,6 +148,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-sass");
+	grunt.loadNpmTasks("grunt-postcss");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-babel");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
@@ -145,6 +159,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask("default", [
 		"sass:dev",
+		"postcss:dev",
 		"jshint:dev",
 		"babel:dev",
 		"uglify:dev",
@@ -156,6 +171,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask("dev", [
 		"sass:dev",
+		"postcss:dev",
 		"jshint:dev",
 		"babel:dev",
 		"uglify:dev",
