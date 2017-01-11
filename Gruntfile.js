@@ -35,6 +35,7 @@ module.exports = function(grunt) {
 		},
 		jshint: {
 			dev: ["resources/js/**/*.js", 
+				  "!resources/js/**/*.es6.js",
 				  "!resources/js/*.min.js"]
 		},
 		babel: {
