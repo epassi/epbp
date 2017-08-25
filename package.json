@@ -9,7 +9,7 @@
   "author": "Emilio Passi",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
-    "babel-preset-latest": "^6.16.0",
+    "babel-preset-env": "^1.6.0",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
     "grunt-browser-sync": "^2.2.0",
