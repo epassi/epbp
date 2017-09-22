@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 			dev: {
 				options: {
 					sourceMap: true,
-					presets: ["latest"]
+					presets: ["env"]
 				},
 				files: [{
 					expand: true,
