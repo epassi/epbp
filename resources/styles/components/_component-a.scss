@@ -1,0 +1,28 @@
+ $component-a-variable: 100;
+
+.component-a {
+	@extend .grid__column;
+	grid-column-start: span 4;
+	
+	background: #444;
+	color: #fff;
+	padding-top: 2.4rem;
+	padding-bottom: 2.4rem;
+
+	&__title {
+		font-weight: bold;
+		margin-bottom: 1.6rem;
+	}
+}
+
+@media screen and (min-width: $grid-medium-min) {
+	.component-a {
+		grid-column-start: span 8;
+	}
+}
+
+@media screen and (min-width: $grid-large-min) {
+	.component-a {
+		grid-column-start: span 12;
+	}
+}

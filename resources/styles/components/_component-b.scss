@@ -1,0 +1,25 @@
+ $component-b-variable: 100;
+
+.component-b {
+	@extend .grid__column;
+	grid-column-start: span 4;
+	
+	background: #ddd;
+	padding-top: 2.4rem;
+	padding-bottom: 2.4rem;
+
+	&__title {
+		font-weight: bold;
+		margin-bottom: 1.6rem;
+	}
+
+	&.is-disabled {
+		opacity: 0.5;
+	}
+}
+
+@media screen and (min-width: $grid-large-min) {
+	.component-b {
+		grid-column-start: span 3;
+	}
+}
