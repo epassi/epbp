@@ -9,11 +9,11 @@ Keep styles (SCSS files) in this directory. SCSS is preprocessed by the `gulp st
 * Global import files
 * Component import files
 
-###Index
+### Index
 
 **index.scss** is the main SCSS file. It should only be importing other SCSS files.
 
-###Global import files
+### Global import files
 
 Styles and variables shared throughout prototype:
 
@@ -24,7 +24,7 @@ Styles and variables shared throughout prototype:
 * _motion.scss
 * _reset.scss 
 
-###Component import files
+### Component import files
 
 Styles and variables unique to prototype components (interface elements). These belong in the **components** directory.
 
