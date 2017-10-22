@@ -3,6 +3,14 @@
 .component-a {
 	@extend .grid__column;
 	grid-column-start: span 4;
+
+	@media screen and (min-width: $grid-breakpoint1) {
+		grid-column-start: span 8;
+	}
+
+	@media screen and (min-width: $grid-breakpoint2) {
+		grid-column-start: span 12;
+	}
 	
 	background: #444;
 	color: #fff;
@@ -12,17 +20,5 @@
 	&__title {
 		font-weight: bold;
 		margin-bottom: 1.6rem;
-	}
-}
-
-@media screen and (min-width: $grid-medium-min) {
-	.component-a {
-		grid-column-start: span 8;
-	}
-}
-
-@media screen and (min-width: $grid-large-min) {
-	.component-a {
-		grid-column-start: span 12;
 	}
 }

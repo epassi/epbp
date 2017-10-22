@@ -4,6 +4,10 @@
 	@extend .grid__column;
 	grid-column-start: span 4;
 	
+	@media screen and (min-width: $grid-breakpoint2) {
+		grid-column-start: span 3;
+	}
+
 	background: #ddd;
 	padding-top: 2.4rem;
 	padding-bottom: 2.4rem;
@@ -15,11 +19,5 @@
 
 	&.is-disabled {
 		opacity: 0.5;
-	}
-}
-
-@media screen and (min-width: $grid-large-min) {
-	.component-b {
-		grid-column-start: span 3;
 	}
 }

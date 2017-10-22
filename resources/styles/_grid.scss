@@ -1,18 +1,36 @@
-$grid-small-max: 		509px;
-$grid-medium-min: 		510px;
-$grid-large-min: 		800px;
-$grid-xlarge-min: 		1300px;
+$grid-breakpoint1: 			510px;
+$grid-breakpoint2: 			800px;
+$grid-breakpoint3: 			1300px;
 
-$grid-gutter-width: 	2.4rem;		 
+$grid-gutter-width: 		2.4rem;		 
 
 
 
 
 .grid {
 	display: grid;
+
+	// Default grid: mobile first, 4 columns.
 	grid-template-columns: repeat(4, 1fr);
 	width: 100%;
 
+	// Breakpoint 1: 8 columns.
+	@media screen and (min-width: $grid-breakpoint1) {
+		grid-template-columns: repeat(8, 1fr);
+	}
+
+	// Breakpoint 2: 12 columns.
+	@media screen and (min-width: $grid-breakpoint2) {
+		grid-template-columns: repeat(12, 1fr);
+	}
+
+	// Breakpoint 3: 12 columns, fixed width.
+	@media screen and (min-width: $grid-breakpoint3) {
+		width: 130.0rem;
+		margin: 0 auto;
+	}
+
+	// Columns
 	&__column {
 		$column-padding: $grid-gutter-width / 2;
 		padding: 0 $column-padding;
@@ -28,24 +46,5 @@ $grid-gutter-width: 	2.4rem;
 		&.bleeds-right {
 			padding: 0 0 0 $column-padding;
 		}
-	}
-}
-
-@media screen and (min-width: $grid-medium-min) {
-	.grid {
-		grid-template-columns: repeat(8, 1fr);
-	}
-}
-
-@media screen and (min-width: $grid-large-min) {
-	.grid {
-		grid-template-columns: repeat(12, 1fr);
-	}
-}
-
-@media screen and (min-width: $grid-xlarge-min) {
-	.grid {
-		width: 130.0rem;
-		margin: 0 auto;
 	}
 }
