@@ -17,7 +17,10 @@
 			"sourceType": "module"
 		},
 		"rules": {
-			"quotes": [0, "backtick"]
+			"quotes": [
+				0,
+				"backtick"
+			]
 		}
 	},
 	"dependencies": {
@@ -35,8 +38,7 @@
 		"pump": "^3.0.0"
 	},
 	"devDependencies": {},
-	"scripts": {
-	},
+	"scripts": {},
 	"author": "Emilio Passi",
 	"license": "ISC"
 }
